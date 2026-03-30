@@ -1,16 +1,153 @@
-# React + Vite
+##  Objective
+To build a modern, fully functional **task manager application** using React.js and React hooks, implementing **CRUD operations, state management, and persistent storage**.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+##  Technologies Used
+- React.js (Functional Components + Hooks)  
+- HTML5 & CSS3  
+- JavaScript (ES6+)  
+- Local Storage  
+- Flexbox & CSS Modules for styling  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+##  Project Structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+react-task-manager/
+├── public/
+│ └── index.html
+├── src/
+│ ├── App.js
+│ ├── App.css
+│ └── components/
+│ ├── TaskInput.js
+│ ├── TaskList.js
+│ └── TaskItem.js
+├── package.json
+└── README.md
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+---
+
+## ✨ Features
+- Add new tasks with timestamp  
+- Edit existing tasks  
+- Delete tasks  
+- Mark tasks as completed  
+- Filter tasks: All / Active / Completed  
+- Data persistence using **Local Storage**  
+- Reusable and modular components (TaskInput, TaskList, TaskItem)  
+- Responsive layout and basic styling  
+
+---
+
+## 🛠️ Hands-On Practice
+1. **Set up React development environment** using `create-react-app`  
+2. **Create first React component** with JSX  
+3. **Build counter app** using `useState` hook  
+4. **Create to-do list app** with state management  
+5. **Fetch and display data from API** using `useEffect`  
+6. **Build simple e-commerce product listing**  
+
+---
+
+## 📋 Step-by-Step Guide
+
+| Day | Task |
+|-----|------|
+| 1 | React Setup – Install Node.js, create React app, understand project structure |
+| 2 | Components & JSX – Create first components, understand JSX syntax |
+| 3 | State Management – Use `useState` hook for task management |
+| 4 | Effects & Data – Use `useEffect` for Local Storage |
+| 5 | Features – Add filtering, editing, task categories |
+| 6 | UI/UX – Style with CSS modules, add animations |
+| 7 | Deployment – Build and deploy to Netlify/Vercel |
+
+---
+
+## 💻 Sample Code (App.js)
+```jsx
+import React, { useState, useEffect } from 'react';
+import './App.css';
+
+function TaskManager() {
+  const [tasks, setTasks] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+
+  useEffect(() => {
+    const savedTasks = localStorage.getItem('tasks');
+    if (savedTasks) setTasks(JSON.parse(savedTasks));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
+
+  const addTask = () => {
+    if (inputValue.trim() !== '') {
+      const newTask = { id: Date.now(), text: inputValue, completed: false };
+      setTasks([...tasks, newTask]);
+      setInputValue('');
+    }
+  };
+
+  const deleteTask = (taskId) => {
+    setTasks(tasks.filter(task => task.id !== taskId));
+  };
+
+  const toggleComplete = (taskId) => {
+    setTasks(tasks.map(task =>
+      task.id === taskId ? { ...task, completed: !task.completed } : task
+    ));
+  };
+
+  return (
+    <div className="task-manager">
+      <h1>Task Manager</h1>
+      <div className="task-input">
+        <input
+          type="text"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          placeholder="Enter a new task..."
+        />
+        <button onClick={addTask}>Add Task</button>
+      </div>
+      <div className="task-list">
+        {tasks.map(task => (
+          <div key={task.id} className={`task-item ${task.completed ? 'completed' : ''}`}>
+            <input
+              type="checkbox"
+              checked={task.completed}
+              onChange={() => toggleComplete(task.id)}
+            />
+            <span>{task.text}</span>
+            <button onClick={() => deleteTask(task.id)}>Delete</button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default TaskManager;
+##screenshots
+## 📸 Screenshots
+
+### 1️⃣ Main Page
+This is the main page of the Task Manager showing the **task input and task list**.
+![Main Page](./screenshots/main page.png)
+
+### 2️⃣ Adding Task
+Example of **adding a new task** to the list.
+![Adding Task](./screenshots/adding task.png)
+
+### 3️⃣ Deleting Task
+Example of **deleting a task** from the task list.
+![Deleting Task](./screenshots/deletingtask.png)
+ Author
+Siri Reddy
+
+Computer Science Student
