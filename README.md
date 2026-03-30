@@ -146,7 +146,7 @@ Example of **adding a new task** to the list.
 
 ### 3️⃣ Deleting Task
 Example of **deleting a task** from the task list.
-![Deleting Task](./screenshots/deletingtask.png)
+![Deleting Task](./screenshots/deleting task.png)
  Author
 Siri Reddy
 
