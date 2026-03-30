@@ -134,20 +134,4 @@ function TaskManager() {
 
 export default TaskManager;
 ##screenshots
-## 📸 Screenshots
 
-### 1️⃣ Main Page
-This is the main page of the Task Manager showing the **task input and task list**.
-![Main Page](./screenshots/main page.png)
-
-### 2️⃣ Adding Task
-Example of **adding a new task** to the list.
-![Adding Task](./screenshots/adding task.png)
-
-### 3️⃣ Deleting Task
-Example of **deleting a task** from the task list.
-![Deleting Task](./screenshots/deleting task.png)
- Author
-Siri Reddy
-
-Computer Science Student
