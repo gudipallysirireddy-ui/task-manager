@@ -133,5 +133,7 @@ function TaskManager() {
 }
 
 export default TaskManager;
-##screenshots
+Author
+Siri Reddy
 
+Computer Science Student
